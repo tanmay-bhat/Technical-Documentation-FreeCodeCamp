@@ -1,0 +1,146 @@
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+<html>
+  <head>
+    <title>Linux Dccumentation</title>    
+  </head>
+  
+  <body>
+    <nav id="navbar">
+      <header>Linux Documentation</header>
+      <ul>
+        <li><a class="nav-link"  href="#introduction">Introduction</a></li>
+        <li><a class="nav-link"  href="#file_structure">File Structure</a></li>
+        <li><a class="nav-link"  href="#Users_and_Permissions_in_Linux">Users and Permissions in Linux</a></li>
+        <li><a class="nav-link"  href="#softwares">Softwares</a></li>
+        <li><a class="nav-link"  href="#security">Security</a></li>
+        <li><a class="nav-link"  href="#distributions">Distributions</a></li>      
+      </ul>
+    </nav>
+    
+    <main id="main-doc">
+  <section class="main-section" id="introduction">
+    <header>Introduction</header>
+    <article>  
+      <p>Linux is a very hands-on operating system. If running Windows is like driving an automatic, then running Linux is like driving a stick. It can take some work, but once you know your way around Linux, you’ll be using the command line and installing packages like a pro. This article aims to ease you into the world of Linux.</p>
+     <p> This guide is intended to be very beginner-friendly. It takes a Linux 101 approach to explanations for basic concepts. There are a few how-to sections as well, which are intended to get you on your feet with your Linode. At times we’ll link off to a different guide that has more details on a particular topic.</p>
+      <img src="https://www.linode.com/docs/tools-reference/introduction-to-linux-concepts/introduction_to_linux_concepts_smg.png"></img>
+      
+      <p>After you connect to your Linode, you should be looking at a shell prompt that looks like this with a blinking cursor:</p>
+        <code>root@localhost:~#</code>
+     <p> What does this bit of text mean? The entire thing is the shell prompt. It’s your terminal’s way of telling you that it’s ready for you to enter the next command. The different parts of the shell prompt provide information:</p>
+  <ul>
+   <li> root: This is your username. To learn more about users, jump down to the Users and Permissions section.</li>
+  <li>localhost: This is your Linode’s hostname. A hostname is your Linode’s name for itself.</li>  
+   <li> ~: After the colon, the SSH session shows the name of the directory you’re in. When you first log in, you’re in your user’s home directory. The tilde (~) is a shortcut for the home directory. If the directory was spelled out, it would be /root. For users other than the root user, home directories are in /home/user1, where user1 is the name of the user.</li>
+ <li>  # - The hash or pound (#) punctuation mark indicates where the shell prompt ends. When you type a command, your text begins after this point. For users other than the root user, the dollar sign (\$) indicates the same thing.</li> 
+      </ul>
+      </artice>
+    </section>
+      
+      <section class="main-section" id="file_structure">
+    <header>File Structure</header>
+    <article>
+    <p>In this section, we’ll look at the structure of a Linux . Everything on your Linode is a file or a directory. Remember, directory is the Linux term for a folder. Linux uses a tree of nested directories to keep its files organized. The highest-level directory is called the root directory. It’s designated with a single slash. Unlike Windows, there are no different disks or drives; the root directory is the highest-level directory for all Linux systems. Underneath the root directory are more, sub-directories.</p>
+     
+        <img src="https://www.linode.com/docs/tools-reference/introduction-to-linux-concepts/1489-linux_directory_structure_2.png" width="347" height="404"></img>
+        
+        <p><h3>Print a Working Directory:</h3></p>
+    <code>root@localhost:~# pwd</code>
+    
+    <p><h3>Change Directories</h3></p>
+  <code>cd /</code>
+  
+  <p><h3>List the Current Directory</h3></p>
+<section>Type the following command, and press Return to execute it:</section>
+
+<h4><code>ls -ahl</code></h4>
+<section>The output should look something like this:</section>
+<code id="dir-list"><br>total 84K
+drwxr-xr-x  22 root root 4.0K Apr 30  2012 .
+drwxr-xr-x  22 root root 4.0K Apr 30  2012 ..
+drwxr-xr-x   2 root root 4.0K Nov  6 16:04 bin
+drwxr-xr-x   3 root root 4.0K Feb  4  2013 boot
+drwxr-xr-x  11 root root  14K Nov  6 16:17 dev
+drwxr-xr-x  94 root root 4.0K Dec 10 20:27 etc
+drwxr-xr-x   4 root root 4.0K Feb 19  2013 home
+drwxr-xr-x  16 root root 4.0K Nov  6 16:04 lib
+drwx------   2 root root  16K Apr 26  2012 lost+found
+drwxr-xr-x   3 root root 4.0K Apr 26  2012 media
+drwxr-xr-x   2 root root 4.0K Apr 19  2012 mnt
+drwxr-xr-x   3 root root 4.0K Nov 18 13:34 opt
+dr-xr-xr-x 141 root root    0 Nov  6 16:16 proc
+drwx------   3 root root 4.0K Apr  7  2013 root
+drwxr-xr-x  15 root root  560 Dec 10 15:57 run
+drwxr-xr-x   2 root root 4.0K Nov  6 16:04 sbin
+drwxr-xr-x   2 root root 4.0K Mar  5  2012 selinux
+drwxr-xr-x   2 root root 4.0K Apr 26  2012 srv
+dr-xr-xr-x  13 root root    0 Nov  6 16:16 sys
+drwxrwxrwt   2 root root 4.0K Dec 10 21:09 tmp
+drwxr-xr-x  10 root root 4.0K Apr 26  2012 usr
+drwxr-xr-x  13 root root 4.0K Nov  6 16:04 var
+</code>
+
+    
+        
+        
+         </artice>
+    </section>
+  
+   <section class="main-section" id="Users_and_Permissions_in_Linux">
+    <header>Users and Permissions in Linux</header>
+    <article>
+    <p>Linux uses a powerful system of users and permissions to make sure that the right people get access to the right files. For example,
+
+   <li> As the owner of your Linode, you want to be able to view, edit, and run every file on the system.</li>
+   <li> You want the general public to be able to view, but not change, your website files, and you don’t want them to see the structural files on your server.</li>
+   <li> A different user, such as someone with a mailbox on your Linux, should be able to access their own files but not anyone else’s.</li>
+      <br>
+      Three categories comprise the file access system in Linux:<br><br>
+
+    <li>Users: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the Adding a New User section of the Securing Your Server guide.</li>
+   <li> Groups: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.</li>
+   <li> Everyone: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the everyone category. Everyone is sometimes known as world, because it includes everyone in the whole world.</li>
+     <p> The next important concept is permissions. Every file and directory on your Linux system has three possible access levels:</p>
+
+   <li> Read: Files with read permissions can be viewed.</li>
+    <li>Write: Files with write permissions can be edited.</li>
+    <li>Execute: Files with execute permissions can be run, like an application. When you start a program or script, you execute it.</li>
+      </artice>
+    </section>
+  
+   <section class="main-section" id="softwares">
+    <header>Softwares</header>
+    <article>
+    <p>Like most things in Linux, installing software is accomplished by typing and executing a specific text command. The most popular Linux distributions come with package managers that make it relatively easy to install and uninstall software on your Linode. Debian and Ubuntu use the Advanced Packaging Tool (APT) package manager, and Fedora and CentOS use the Yellowdog Updater, Modified (yum) package manager.</p>
+      
+      </artice>
+    </section>
+  
+   <section class="main-section" id="security">
+    <header>Security</header>
+    <article>
+      <p>When you run a Linux system, you are in charge of its security. The Internet is full of people who want to use your Linode’s computing power for their own goals. If you neglect to change default passwords, install out-of-date software, or leave other security holes available for hackers to exploit, it won’t take long for your system to get hacked. Follow the steps in the Securing Your Server guide to harden your server’s security.</p>
+      
+        
+      </artice>
+    </section>
+  
+   <section class="main-section" id="distributions">
+    <header>Distributions</header>
+    <article>
+      <p>The main differences between Linux distributions tend to be from goals and aims of the distribution developers and which bundles of software are installed by default, rather than differences in the code of the Linux kernel.</p>
+
+<p>RedHat Linux (which includes Fedora and CentOS) and Debian Linux (which includes Ubuntu) share a large amount of code with each other. The kernels are largely the same, and most of the user utilities and applications from the GNU project are the same.</p>
+
+<p>Some distributions are designed to be as simple and minimalistic as possible, while others are designed to contain the most current, bleeding-edge software. Still others aim to provide the greatest amount of stability and reliability. In addition to the personality of each distribution, which you’ll have to discover for yourself, there are a number of factors that you might find useful when choosing a distribution.</p>
+  
+  
+        
+        
+      
+    
+      </main>
+    
+  </body>
+</html>
